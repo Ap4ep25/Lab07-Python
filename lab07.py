@@ -1,0 +1,77 @@
+from math import sin, cos
+
+counter = 0
+res = []
+res_G = []
+res_F = []
+res_Y = []
+sres_G = ""
+sres_F = ""
+sres_Y = ""
+common_res = []
+
+a = float(input("Введите а: "))
+
+x_min = str(input("Введите минимальное значение x: "))
+x_min = float(x_min)
+
+x_max = str(input("Введите макимальное значение х: "))
+x_max = float(x_max)
+
+step_c = str(input("Введите число шагов: "))
+step_c = int(step_c)
+
+x = x_min
+
+while x <= x_max:
+    T = (-10 * a ** 2 + 11 * a * x + 3 * x ** 2)
+    if T < 0.000000001:
+        print(" Такого значения не существует... ")
+    else:
+        G = ((-2 * (-5 * (a ** 2) + 3 * a * x_min + 2 * (x_min ** 2))) / T)
+        res_G.append(res)
+        print("\tG =", G)
+        res_G.append(G)
+        common_res.append(G)
+        x += (x_max - x_min) / (step_c - 1)
+        sres_G += str(G)
+print("___________________________")
+
+x = x_min
+
+while x <= x_max:
+        F = sin(10 * a ** 2 - 7 * a * x + x ** 2)
+        res_F.append(res)
+        print("\tF =", F)
+        res_F.append(F)
+        common_res.append(F)
+        x += (x_max - x_min) / (step_c - 1)
+        sres_F += str(F)
+print("___________________________")
+
+x = x_min
+
+while x <= x_max:
+        Y = sin(1) / cos(45 * a ** 2 - 79 * a * x + 30 * x ** 2)
+        res_Y.append(res)
+        print("\tY =", Y)
+        res_Y.append(Y)
+        common_res.append(Y)
+        x += (x_max - x_min) / (step_c - 1)
+        sres_Y += str(Y)
+print("___________________________")
+
+my_file = open("result.txt", "w")
+my_file.write("G = ")
+my_file.write(sres_G)
+my_file.write("\nF = ")
+my_file.write(sres_F)
+my_file.write("\nY = ")
+my_file.write(sres_Y)
+my_file.close()
+
+my_file = open("result.txt", "r")
+my_string = my_file.read()
+print("Из файла result.txt было прочитано: ")
+print(my_string)
+my_file.close()
